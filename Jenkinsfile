@@ -11,7 +11,7 @@ agent none
         stage('Build') {
         agent { node { label 'home' } }
             steps {
-               sh ' echo GIT_COMIT'
+               sh 'env'
                sh 'docker build -t GIT_COMMIT .'
             }
         }
