@@ -4,7 +4,13 @@ agent none
         stage('Test') {
          agent { dockerfile true }
             steps {
-               echo "Test step"
+               sh 'bundle exec rspec'
+            }
+        }
+
+        stage('Build') {
+            steps {
+               echo "Build step"
             }
         }
     }

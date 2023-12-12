@@ -9,5 +9,3 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 
 COPY . /app
-
-RUN bundle exec rspec
