@@ -19,9 +19,9 @@ agent none
         stage('Deploy') {
         agent { node { label 'home' } }
                     steps {
-                       sh 'docker kill $(docker ps -q)'
+                       sh 'docker kill $GIT_PREVIOUS_SUCCESSFUL_COMMIT'
                        sh 'docker run -d --net="host" $GIT_COMMIT'
-                       sh 'docker rm $(docker ps -a -q)'
+                       sh 'docker rm $GIT_PREVIOUS_SUCCESSFUL_COMMIT'
                     }
                 }
     }
