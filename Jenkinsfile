@@ -9,15 +9,14 @@ agent none
         }
 
         stage('Build') {
-        agent any
+        agent { node { label 'home' } }
             steps {
                sh 'docker build -t freya:${scmVars.GIT_COMMIT} .'
             }
         }
 
         stage('Deploy') {
-        agent any
-
+        agent { node { label 'home' } }
                     steps {
                        sh 'docker kill $(docker ps -q)'
                        sh 'docker run -d --net="host" freya:${scmVars.GIT_COMMIT}'
