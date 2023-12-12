@@ -11,7 +11,8 @@ agent none
         stage('Build') {
         agent { node { label 'home' } }
             steps {
-               sh 'docker build -t freya:${scmVars.GIT_COMMIT} .'
+               sh ' echo GIT_COMIT'
+               sh 'docker build -t GIT_COMMIT .'
             }
         }
 
@@ -19,7 +20,7 @@ agent none
         agent { node { label 'home' } }
                     steps {
                        sh 'docker kill $(docker ps -q)'
-                       sh 'docker run -d --net="host" freya:${scmVars.GIT_COMMIT}'
+                       sh 'docker run -d --net="host" GIT_COMMIT'
                        sh 'docker rm $(docker ps -a -q)'
                     }
                 }
