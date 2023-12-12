@@ -1,10 +1,11 @@
 pipeline {
-    agent { dockerfile true }
+
 
     stages {
         stage('Test') {
+         agent { dockerfile true }
             steps {
-               sh 'ruby --version'
+               echo "Test step"
             }
         }
     }
