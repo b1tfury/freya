@@ -12,7 +12,7 @@ agent none
         agent { node { label 'home' } }
             steps {
                sh 'env'
-               sh 'docker build -t GIT_COMMIT .'
+               sh 'docker build -t $(env.GIT_COMMIT) .'
             }
         }
 
@@ -20,7 +20,7 @@ agent none
         agent { node { label 'home' } }
                     steps {
                        sh 'docker kill $(docker ps -q)'
-                       sh 'docker run -d --net="host" GIT_COMMIT'
+                       sh 'docker run -d --net="host" $(env.GIT_COMMIT)'
                        sh 'docker rm $(docker ps -a -q)'
                     }
                 }
