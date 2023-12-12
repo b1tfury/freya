@@ -20,8 +20,9 @@ agent none
         agent { node { label 'home' } }
                     steps {
                        sh 'docker kill freya'
+                       sh 'docker rm freya'
                        sh 'docker run -d --net="host" --name freya $GIT_COMMIT'
-                       sh 'docker rm $GIT_PREVIOUS_SUCCESSFUL_COMMIT'
+
                     }
                 }
     }
