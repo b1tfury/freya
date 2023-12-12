@@ -11,7 +11,7 @@ agent none
         stage('Build') {
         agent any
             steps {
-               sh 'docker build -t freya:$scmVars.GIT_COMMIT} .'
+               sh 'docker build -t freya:${scmVars.GIT_COMMIT} .'
             }
         }
 
